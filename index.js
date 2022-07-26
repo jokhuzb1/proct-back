@@ -16,7 +16,7 @@ database.connect((err) => {
 app.use('/products', productRouter)
 
 app.get('/', (req, res) => {
-  res.write("welcome to phone shop");
+  res.sned("welcome to phone shop");
 });
 
 app.get('*', (req, res) => {
