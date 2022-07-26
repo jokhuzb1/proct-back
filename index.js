@@ -8,7 +8,7 @@ app.use(express.json());
 let db
 database.connect((err) => {
   if (!err) {
-    app.listen(4000, () => console.log('server is up'))
+    app.listen(process.env.PORT, () => console.log('server is up'))
     db = database.get()
   }
 })
