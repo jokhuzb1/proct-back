@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
       }
       if (err) {
         console.log(err)
+        res.status(400).json("unexpected error occured")
       }
     })
 })
@@ -44,8 +45,9 @@ router.post('/', (req, res) => {
       amount
     })
     product.save()
+    res.status(200).json("Successfully added")
   } catch (err) {
-    res.status(400)
+    res.status(400).json("Unable to add new document into the database")
     console.log(err)
   }
 })
