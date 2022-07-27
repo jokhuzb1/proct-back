@@ -3,15 +3,14 @@ const router = express.Router();
 import { Product } from '../models/product.js';
 
 router.get('/', async (req, res) => {
-  console.log(req.body)
   const options = {
-    maxprice: req.body.maxprice ? req.body.maxprice : 9999,
-    minprice: req.body.minprice ? req.body.minprice : 0,
-    color: req.body.color ? req.body.color : /.*/,
-    minram: req.body.minram ? req.body.minram - 1 : 0,
-    maxram: req.body.maxram ? parseFloat(req.header.maxram) + 1 : 9999,
-    minstorage: req.body.minstorage ? req.body.minstorage - 1 : 0,
-    maxstorage: req.body.maxstorage ? parseFloat(req.body.maxstorage) + 1 : 9999
+    maxprice: req.query.maxprice ? req.query.maxprice : 9999,
+    minprice: req.query.minprice ? req.query.minprice : 0,
+    color: req.query.color ? req.query.color : /.*/,
+    minram: req.query.minram ? parseFloat(req.query.minram) - 1 : 0,
+    maxram: req.query.maxram ? parseFloat(req.query.maxram) + 1 : 9999,
+    minstorage: req.query.minstorage ? req.query.minstorage - 1 : 0,
+    maxstorage: req.query.maxstorage ? parseFloat(req.query.maxstorage) + 1 : 9999
   }
 
   Product.find({
